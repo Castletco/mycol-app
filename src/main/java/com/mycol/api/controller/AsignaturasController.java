@@ -9,30 +9,30 @@ import java.util.List;
 
 @RestController
 @CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
-@RequestMapping("/api")
+@RequestMapping("/asignaturas")
 public class AsignaturasController {
 
     @Autowired
     private IAsignaturaService serviceAsignaturas;
 
-    @GetMapping("/asignaturas")
+    @GetMapping("/index")
     public List<Asignatura> bustarTodas() {
         return serviceAsignaturas.buscarTodos();
     }
 
-    @PostMapping("/asignaturas")
+    @PostMapping("/save")
     public Asignatura guardar (@RequestBody Asignatura asignatura) {
         serviceAsignaturas.guardar(asignatura);
         return asignatura;
     }
 
-    @PutMapping("/asignaturas")
+    @PutMapping("/update")
     public Asignatura modificar (@RequestBody Asignatura asignatura){
         serviceAsignaturas.guardar(asignatura);
         return asignatura;
     }
 
-    @DeleteMapping("/asignaturas/{id}")
+    @DeleteMapping("/delete/{id}")
     public String eliminar (@PathVariable("id") Integer idAsignatura) {
         serviceAsignaturas.eliminar(idAsignatura);
         return "Registro Asignaturas Eliminado";
