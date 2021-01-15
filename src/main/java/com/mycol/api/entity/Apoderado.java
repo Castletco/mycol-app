@@ -24,8 +24,6 @@ public class Apoderado {
     @OneToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
-    @OneToMany(mappedBy = "Alumnos")
-    private List<Alumno> listaAlumnos;
     private Boolean viveConAlumno;
     @OneToOne
     @JoinColumn(name = "idEstado")

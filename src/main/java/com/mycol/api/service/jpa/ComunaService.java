@@ -26,8 +26,8 @@ public class ComunaService implements IComunaService {
     }
 
     @Override
-    public Comuna buscarPorNombre(String nombreComuna) {
-        return repoComunas.findByName(nombreComuna);
+    public Comuna buscarPorComuna(String nombreComuna) {
+        return repoComunas.findByComuna(nombreComuna);
     }
 
     @Override

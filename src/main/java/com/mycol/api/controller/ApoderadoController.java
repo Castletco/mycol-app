@@ -9,28 +9,28 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
-@RequestMapping("/apoderados")
+@RequestMapping("/api")
 public class ApoderadoController {
 
     @Autowired
     private IApoderadoService serviceApoderados;
 
-    @GetMapping("/index")
+    @GetMapping("/apoderados")
     public List<Apoderado> buscarTodos() { return serviceApoderados.buscarTodos(); }
 
-    @PostMapping("/save")
+    @PostMapping("/apoderados")
     public Apoderado guardar (@RequestBody Apoderado apoderado) {
         serviceApoderados.guardar(apoderado);
         return apoderado;
     }
 
-    @PutMapping("/update")
+    @PutMapping("/apoderados")
     public Apoderado modificar (@RequestBody Apoderado apoderado) {
         serviceApoderados.guardar(apoderado);
         return apoderado;
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/apoderados/{id}")
     public String eliminar (@PathVariable("id") Integer idApoderado) {
         serviceApoderados.eliminar(idApoderado);
         return "Registro Apoderado Eliminado";

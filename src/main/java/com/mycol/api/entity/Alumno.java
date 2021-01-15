@@ -29,8 +29,8 @@ public class Alumno {
     @OneToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
-    @ManyToOne
-    @JoinColumn(name = "idApoderado", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "idApoderado")
     private Apoderado apoderado;
     private Character esNuevo;
     @OneToOne

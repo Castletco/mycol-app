@@ -9,28 +9,28 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
-@RequestMapping("/establecimientos")
+@RequestMapping("/api")
 public class EstablecimientoController {
 
     @Autowired
     private IEstablecimientoService serviceEstablecimientos;
 
-    @GetMapping("/index")
+    @GetMapping("/establecimientos")
     public List<Establecimiento> buscarTodos() { return serviceEstablecimientos.buscarTodos(); }
 
-    @PostMapping("/save")
+    @PostMapping("/establecimientos")
     public Establecimiento guardar (Establecimiento establecimiento) {
         serviceEstablecimientos.guardar(establecimiento);
         return establecimiento;
     }
 
-    @PutMapping("/update")
+    @PutMapping("/establecimientos")
     public Establecimiento modificar (Establecimiento establecimiento) {
         serviceEstablecimientos.guardar(establecimiento);
         return establecimiento;
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/establecimientos/{id}")
     public String eliminar (@PathVariable("id") Integer idEstablecimiento) {
         serviceEstablecimientos.eliminar(idEstablecimiento);
         return "Registro Establecimiento Eliminado";

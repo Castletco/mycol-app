@@ -9,28 +9,28 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
-@RequestMapping("/matriculas")
+@RequestMapping("/api")
 public class MatriculaController {
 
     @Autowired
     private IMatriculaService serviceMatriculas;
 
-    @GetMapping("/index")
+    @GetMapping("/matriculas")
     public List<Matricula> buscarTodas() { return serviceMatriculas.buscarTodas(); }
 
-    @PostMapping("/save")
+    @PostMapping("/matriculas")
     public Matricula guardar (Matricula matricula) {
         serviceMatriculas.guardar(matricula);
         return matricula;
     }
 
-    @PutMapping("/update")
+    @PutMapping("/matriculas")
     public Matricula modificar (Matricula matricula) {
         serviceMatriculas.guardar(matricula);
         return matricula;
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/matriculas")
     public String eliminar (Integer idMatricula) {
         serviceMatriculas.eliminar(idMatricula);
         return "Registro Matricula Eliminado";

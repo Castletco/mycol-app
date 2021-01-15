@@ -7,6 +7,6 @@ import java.util.List;
 public interface IComunaService {
     List<Comuna> buscarTodas();
     Comuna guardar (Comuna comuna);
-    Comuna buscarPorNombre (String nombreComuna);
+    Comuna buscarPorComuna (String nombreComuna);
     void eliminar (Integer idComuna);
 }
