@@ -29,9 +29,6 @@ public class AnioAcademico {
     @OneToOne
     @JoinColumn(name = "idEstado")
     private Estado estado;
-    @OneToOne
-    @JoinColumn(name = "idEstablecimiento")
-    private Establecimiento establecimiento;
     private Integer cantidadMatriculas;
     private LocalDate fechaCreacion;
     private LocalDate fechaModificacion;

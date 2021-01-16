@@ -18,9 +18,6 @@ public class Asignatura {
     private Integer id;
     private String nombre;
     private String codigo;
-    @OneToOne
-    @JoinColumn(name = "idEstablecimiento")
-    private Establecimiento establecimiento;
     private LocalDate fechaCreacion;
     private LocalDate fechaModificacion;
     private Integer createdBy;

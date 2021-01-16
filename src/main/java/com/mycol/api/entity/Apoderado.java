@@ -19,9 +19,6 @@ public class Apoderado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne
-    @JoinColumn(name = "idEstablecimiento")
-    private Establecimiento establecimiento;
-    @OneToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
     private Boolean viveConAlumno;

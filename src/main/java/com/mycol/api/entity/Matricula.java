@@ -20,9 +20,6 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne
-    @JoinColumn(name = "idEstablecimiento")
-    private Establecimiento establecimiento;
-    @OneToOne
     @JoinColumn(name = "idApoderado")
     private Apoderado apoderado;
     @OneToOne
