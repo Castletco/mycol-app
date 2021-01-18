@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Perfiles")
+@Table(name = "perfiles")
 public class Perfil {
 
     @Id

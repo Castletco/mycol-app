@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "Niveles")
+@Table(name = "niveles")
 public class Nivel {
 
     @Id
