@@ -25,7 +25,7 @@ public class AnioAcademicoController {
     }
 
     @PutMapping("/anioAcademico")
-    public AnioAcademico modificar (AnioAcademico anioAcademico) {
+    public AnioAcademico modificar (@RequestBody AnioAcademico anioAcademico) {
         serviceAnioAcademico.guardar(anioAcademico);
         return anioAcademico;
     }
