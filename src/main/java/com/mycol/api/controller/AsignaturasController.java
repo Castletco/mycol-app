@@ -27,9 +27,6 @@ public class AsignaturasController {
 
     @PostMapping("/asignaturas")
     public Asignatura guardar (@RequestBody Asignatura asignatura) {
-        if (asignatura.getFechaModificacion() == null) {
-            asignatura.setFechaModificacion(null);
-        }
         serviceAsignaturas.guardar(asignatura);
         return asignatura;
     }
