@@ -21,6 +21,15 @@ public class AsignaturaService implements IAsignaturaService {
     }
 
     @Override
+    public Asignatura buscarPorId(int idAsignatura) {
+        Optional<Asignatura> optional = repoAsignaturas.findById(idAsignatura);
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
+    }
+
+    @Override
     public Asignatura guardar(Asignatura asignatura) {
         return repoAsignaturas.save(asignatura);
     }

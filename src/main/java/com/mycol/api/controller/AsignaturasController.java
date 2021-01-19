@@ -16,13 +16,18 @@ public class AsignaturasController {
     private IAsignaturaService serviceAsignaturas;
 
     @GetMapping("/asignaturas")
-    public List<Asignatura> bustarTodas() {
+    public List<Asignatura> buscarTodas() {
         return serviceAsignaturas.buscarTodos();
+    }
+
+    @GetMapping("/asignaturas/edit({id}")
+    public Asignatura editar (@PathVariable("id") int idAsignatura) {
+        return serviceAsignaturas.buscarPorId(idAsignatura);
     }
 
     @PostMapping("/asignaturas")
     public Asignatura guardar (@RequestBody Asignatura asignatura) {
-        if (asignatura.getFechaModificacion() == null){
+        if (asignatura.getFechaModificacion() == null) {
             asignatura.setFechaModificacion(null);
         }
         serviceAsignaturas.guardar(asignatura);
