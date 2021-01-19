@@ -41,7 +41,7 @@ public class FirmaMatricula {
     private int edadApoderado;
     private char sexoSApoderado;
     private int nacionalidadApoderado;
-    private String apoderadoViveConAlumno;
+    private int apoderadoViveConAlumno;
     private String telefonoApoderado;
     private String emailApoderado;
     private String direccionApoderado;
@@ -55,4 +55,5 @@ public class FirmaMatricula {
     private int tieneRsh;
     private int conocePuntajeRsh;
     private int puntajeRsh;
+    private int numeroMatricula;
 }
