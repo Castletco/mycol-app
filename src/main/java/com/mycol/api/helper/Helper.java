@@ -63,7 +63,7 @@ public class Helper {
         userAlumno.setFechaModificacion(null);
         userAlumno.setModifiedBy(null);
         userAlumno.setCreatedBy(null);
-        userAlumno.setUsername("testUserName7");
+        userAlumno.setUsername(randomAlphaNumeric(3));
         userAlumno.setPassword("12345");
         return userAlumno;
     }
@@ -92,7 +92,7 @@ public class Helper {
         userApoderado.setFechaCreacion(LocalDate.now());
         userApoderado.setFechaModificacion(null);
         userApoderado.setModifiedBy(null);
-        userApoderado.setUsername("testUserParentName12");
+        userApoderado.setUsername(randomAlphaNumeric(3));
         userApoderado.setPassword("12345");
         return userApoderado;
     }
@@ -153,5 +153,15 @@ public class Helper {
 
     public Nivel generaNivel(int idNivel) {
         return serviceNiveles.buscarPorId(idNivel);
+    }
+
+    public static String randomAlphaNumeric (int count) {
+        String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder builder = new StringBuilder();
+        while(count-- != 0) {
+            int character = (int) (Math.random() * CARACTERES.length());
+            builder.append(CARACTERES.charAt(character));
+        }
+        return builder.toString();
     }
 }
