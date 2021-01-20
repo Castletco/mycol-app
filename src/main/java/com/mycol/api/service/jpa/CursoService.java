@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CursoService implements ICursoService {
@@ -17,6 +18,15 @@ public class CursoService implements ICursoService {
     @Override
     public List<Curso> buscarTodos() {
         return repoCursos.findAll();
+    }
+
+    @Override
+    public Curso buscarPorId(int idCurso) {
+        Optional<Curso> optional = repoCursos.findById(idCurso);
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
     }
 
     @Override

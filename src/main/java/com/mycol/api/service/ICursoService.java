@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ICursoService {
     List<Curso> buscarTodos();
+    Curso buscarPorId (int idCurso);
     Curso guardar (Curso curso);
     void eliminar (Integer idCurso);
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProfesorService implements IProfesorService {
@@ -22,6 +23,15 @@ public class ProfesorService implements IProfesorService {
     @Override
     public Profesor guardar(Profesor profesor) {
         return repoProfesores.save(profesor);
+    }
+
+    @Override
+    public Profesor buscarPorId(int idProfesor) {
+        Optional<Profesor> optional = repoProfesores.findById(idProfesor);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
     }
 
     @Override

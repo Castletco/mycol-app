@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface IEstadoService {
     List<Estado> buscarTodos();
+    Estado buscarPorId(int idEstado);
     Estado guardar (Estado estado);
     void eliminar (Integer idEstado);
 }

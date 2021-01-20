@@ -16,7 +16,7 @@ public class FirmaMatricula {
     private String apellidoPatAlumno;
     private String apellidoMatAlumno;
     private String rutAlumno;
-    private LocalDate fechaNacimiento;
+    private LocalDate fechaNacimientoAlumno;
     private int edadAlumno;
     private char sexoSAlumno;
     private int nacionalidadAlumno;

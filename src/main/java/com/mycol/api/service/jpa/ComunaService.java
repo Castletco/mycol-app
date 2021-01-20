@@ -26,6 +26,15 @@ public class ComunaService implements IComunaService {
     }
 
     @Override
+    public Comuna buscarPorId(int idComuna) {
+        Optional<Comuna> optional = repoComunas.findById(idComuna);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
+    }
+
+    @Override
     public Comuna buscarPorComuna(String nombreComuna) {
         return repoComunas.findByComuna(nombreComuna);
     }

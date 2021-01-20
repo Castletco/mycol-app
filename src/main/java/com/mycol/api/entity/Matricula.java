@@ -26,8 +26,8 @@ public class Matricula {
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
     @OneToOne
-    @JoinColumn(name = "idCurso")
-    private Curso curso;
+    @JoinColumn(name = "idNivel")
+    private Nivel nivel;
     private Integer numeroMatricula;
     @OneToOne
     @JoinColumn(name = "idEstado")

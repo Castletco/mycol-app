@@ -2,6 +2,7 @@ package com.mycol.api.helper;
 
 import com.mycol.api.entity.*;
 import com.mycol.api.repository.*;
+import com.mycol.api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,40 +12,58 @@ import java.time.LocalDate;
 public class Helper {
 
     @Autowired
-    private NacionalidadRepository repoNacionalidades;
+    private INacionalidadService serviceNacionalidad;
 
     @Autowired
-    private ComunaRepository repoComunas;
+    private IComunaService serviceComunas;
 
     @Autowired
-    private RegionRepository repoRegiones;
+    private IRegionService serviceRegiones;
+
+    @Autowired
+    private IEstadoService serviceEstados;
+
+    @Autowired
+    private IPerfilService servicePerfiles;
+
+    @Autowired
+    private ITipoUsuarioService serviceTipoUsuarios;
+
+    @Autowired
+    private IProfesorService serviceProfesores;
+
+    @Autowired
+    private ICursoService serviceCursos;
+
+    @Autowired
+    private INivelService serviceNiveles;
 
     public Usuario generaUsuarioAlumno (FirmaMatricula firma) {
         Usuario userAlumno = new Usuario();
         userAlumno.setNombreUsuario(firma.getNombreAlumno());
-        userAlumno.setApellidoMaternoUsuario(firma.getApellidoPatAlumno());
+        userAlumno.setApellidoPaternoUsuario(firma.getApellidoPatAlumno());
         userAlumno.setApellidoMaternoUsuario(firma.getApellidoMatAlumno());
         userAlumno.setRut(firma.getRutAlumno());
-        userAlumno.setFechaNacimiento(firma.getFechaNacimiento());
+        userAlumno.setFechaNacimiento(firma.getFechaNacimientoAlumno());
         userAlumno.setEdad(firma.getEdadAlumno());
         userAlumno.setSexo(firma.getSexoSAlumno());
         userAlumno.setDireccion(firma.getDireccionAlumno());
         userAlumno.setTelefono(firma.getTelefonoAlumno());
-        Nacionalidad nacionalidad = repoNacionalidades.getOne(firma.getNacionalidadAlumno());
+        Nacionalidad nacionalidad = serviceNacionalidad.buscarPorId(firma.getNacionalidadAlumno());
         userAlumno.setNacionalidad(nacionalidad);
-        Region region = repoRegiones.getOne(firma.getRegionAlumno());
+        Region region = serviceRegiones.buscarPorId(firma.getRegionAlumno());
         userAlumno.setRegion(region);
-        Comuna comuna = repoComunas.getOne(firma.getComunaAlumno());
+        Comuna comuna = serviceComunas.buscarPorId(firma.getComunaAlumno());
         userAlumno.setComuna(comuna);
         userAlumno.setEstado(setEstadoInicial());
         userAlumno.setEmail(firma.getEmailAlumno());
-        userAlumno.setTipoUsuario(setTipoUsuarioInicial());
+        userAlumno.setTipoUsuario(setTipoUsuarioInicialAlumno());
         userAlumno.setPerfil(setPerfilInicial());
         userAlumno.setFechaCreacion(LocalDate.now());
         userAlumno.setFechaModificacion(null);
         userAlumno.setModifiedBy(null);
         userAlumno.setCreatedBy(null);
-        userAlumno.setUsername("testUserName");
+        userAlumno.setUsername("testUserName7");
         userAlumno.setPassword("12345");
         return userAlumno;
     }
@@ -60,25 +79,27 @@ public class Helper {
         userApoderado.setSexo(firma.getSexoSApoderado());
         userApoderado.setDireccion(firma.getDireccionApoderado());
         userApoderado.setTelefono(firma.getTelefonoApoderado());
-        Nacionalidad nacionalidad = repoNacionalidades.getOne(firma.getNacionalidadApoderado());
+        Nacionalidad nacionalidad = serviceNacionalidad.buscarPorId(firma.getNacionalidadApoderado());
         userApoderado.setNacionalidad(nacionalidad);
-        Region region = repoRegiones.getOne(firma.getRegionApoderado());
+        Region region = serviceRegiones.buscarPorId(firma.getRegionApoderado());
         userApoderado.setRegion(region);
-        Comuna comuna = repoComunas.getOne(firma.getComunaApoderado());
+        Comuna comuna = serviceComunas.buscarPorId(firma.getComunaApoderado());
         userApoderado.setComuna(comuna);
         userApoderado.setEstado(setEstadoInicial());
         userApoderado.setEmail(firma.getEmailApoderado());
         userApoderado.setPerfil(setPerfilInicial());
-        userApoderado.setTipoUsuario(setTipoUsuarioInicial());
+        userApoderado.setTipoUsuario(setTipoUsuarioInicialApoderado());
         userApoderado.setFechaCreacion(LocalDate.now());
         userApoderado.setFechaModificacion(null);
         userApoderado.setModifiedBy(null);
+        userApoderado.setUsername("testUserParentName12");
+        userApoderado.setPassword("12345");
         return userApoderado;
     }
 
     public Apoderado generaApoderadoSinF (int viveAlumno) {
         Apoderado apoderado = new Apoderado();
-        apoderado.setViveConAlumno(viveAlumno == 1 ? true : false);
+        apoderado.setViveConAlumno(viveAlumno == 1);
         apoderado.setEstado(setEstadoInicial());
         apoderado.setFechaCreacion(LocalDate.now());
         apoderado.setFechaModificacion(null);
@@ -107,30 +128,30 @@ public class Helper {
     }
 
     public Estado setEstadoInicial() {
-        Estado estado = new Estado();
-        estado.setId(1);
-        return estado;
+        return serviceEstados.buscarPorId(1);
     }
 
     public Perfil setPerfilInicial() {
-        Perfil perfil = new Perfil();
-        perfil.setId(1);
-        return perfil;
+        return servicePerfiles.buscarPorId(2);
     }
 
-    public TipoUsuario setTipoUsuarioInicial() {
-        TipoUsuario tipoUsuario = new TipoUsuario();
-        tipoUsuario.setId(1);
-        return tipoUsuario;
+    public TipoUsuario setTipoUsuarioInicialApoderado() {
+        return serviceTipoUsuarios.buscarPorId(6);
     }
 
-    public Asignatura generaAsignaturaDummy () {
-        Asignatura asignatura = new Asignatura();
-        asignatura.setId(1);
-        asignatura.setNombre("Lenguaje y Comunicacion");
-        asignatura.setCodigo("LEN123");
-        return asignatura;
+    public TipoUsuario setTipoUsuarioInicialAlumno() {
+        return serviceTipoUsuarios.buscarPorId(5);
     }
 
+    public Curso generaCursoDummy() {
+        return serviceCursos.buscarPorId(1);
+    }
 
+    public Profesor generaProfesorDummy() {
+        return serviceProfesores.buscarPorId(1);
+    }
+
+    public Nivel generaNivel(int idNivel) {
+        return serviceNiveles.buscarPorId(idNivel);
+    }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NacionalidadService implements INacionalidadService {
@@ -17,6 +18,15 @@ public class NacionalidadService implements INacionalidadService {
     @Override
     public List<Nacionalidad> buscarTodas() {
         return repoNacionalidad.findAll();
+    }
+
+    @Override
+    public Nacionalidad buscarPorId(int idNacionalidad) {
+        Optional<Nacionalidad> optional = repoNacionalidad.findById(idNacionalidad);
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
     }
 
     @Override

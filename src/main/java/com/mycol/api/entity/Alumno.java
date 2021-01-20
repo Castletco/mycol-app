@@ -21,9 +21,6 @@ public class Alumno {
     @JoinColumn(name = "idCurso")
     private Curso curso;
     @OneToOne
-    @JoinColumn(name = "idAsignatura")
-    private Asignatura asignatura;
-    @OneToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
     @OneToOne

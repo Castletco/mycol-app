@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PerfiService implements IPerfilService {
@@ -17,6 +18,15 @@ public class PerfiService implements IPerfilService {
     @Override
     public List<Perfil> buscarTodos() {
         return repoPerfiles.findAll();
+    }
+
+    @Override
+    public Perfil buscarPorId(int idPerfil) {
+        Optional<Perfil> optional = repoPerfiles.findById(idPerfil);
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
     }
 
     @Override

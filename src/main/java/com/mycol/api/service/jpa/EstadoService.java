@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EstadoService implements IEstadoService {
@@ -17,6 +18,15 @@ public class EstadoService implements IEstadoService {
     @Override
     public List<Estado> buscarTodos() {
         return repoEstados.findAll();
+    }
+
+    @Override
+    public Estado buscarPorId(int idEstado) {
+        Optional<Estado> optional = repoEstados.findById(idEstado);
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
     }
 
     @Override
