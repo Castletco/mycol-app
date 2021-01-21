@@ -1,7 +1,7 @@
 package com.mycol.api.controller;
 
-import com.mycol.api.entity.DatosAdicionales;
-import com.mycol.api.service.IDatosAdicionalesService;
+import com.mycol.api.entity.DatosFamiliares;
+import com.mycol.api.service.IDatosFamiliaresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,34 +10,34 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RequestMapping("/api")
-public class DatosAdicionalesController {
+public class DatosFamiliaresController {
 
     @Autowired
-    private IDatosAdicionalesService serviceDatosAdicionales;
+    private IDatosFamiliaresService serviceDatosAdicionales;
 
     @GetMapping("/datosAdicionales")
-    public List<DatosAdicionales> buscarTodos() {
+    public List<DatosFamiliares> buscarTodos() {
         return serviceDatosAdicionales.buscarTodos();
     }
 
     @GetMapping("/datosAdicionales/search/{id}")
-    public DatosAdicionales buscarPorId (@PathVariable("id") int idDatosAdicionales) {
+    public DatosFamiliares buscarPorId (@PathVariable("id") int idDatosAdicionales) {
         return serviceDatosAdicionales.buscarPorId(idDatosAdicionales);
     }
 
     @GetMapping("/datosAdicionales/searchAlumno/{id}")
-    public DatosAdicionales buscarPorIdAlumno (@PathVariable("id") int idAlumno) {
+    public DatosFamiliares buscarPorIdAlumno (@PathVariable("id") int idAlumno) {
         return serviceDatosAdicionales.buscarPorIdAlumno(idAlumno);
     }
 
     @PostMapping("/datosAdicionales")
-    public DatosAdicionales guardar (DatosAdicionales datosAdicionales) {
-        return serviceDatosAdicionales.guardar(datosAdicionales);
+    public DatosFamiliares guardar (DatosFamiliares datosFamiliares) {
+        return serviceDatosAdicionales.guardar(datosFamiliares);
     }
 
     @PutMapping("/datosAdicionales")
-    public DatosAdicionales modificar (DatosAdicionales datosAdicionales) {
-        return serviceDatosAdicionales.guardar(datosAdicionales);
+    public DatosFamiliares modificar (DatosFamiliares datosFamiliares) {
+        return serviceDatosAdicionales.guardar(datosFamiliares);
     }
 
     @DeleteMapping("/datosAdicionales/{id}")

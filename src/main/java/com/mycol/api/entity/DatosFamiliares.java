@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class DatosAdicionales {
+public class DatosFamiliares {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
