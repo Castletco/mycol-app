@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.mycol</groupId>
     <artifactId>mycol-app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>mycol-app</name>
     <description>MyCol APP</description>
 
