@@ -25,6 +25,11 @@ public class UsuarioController {
         return serviceUsuarios.buscarPorId(idUsuario);
     }
 
+    @GetMapping("/usuarios/searchRut/{rut}")
+    public Usuario buscarPorRut (@PathVariable("rut") int rutUsuario) {
+        return serviceUsuarios.buscarPorRut(rutUsuario);
+    }
+
     @PostMapping("/usuarios")
     public Usuario guardar (@RequestBody Usuario usuario) {
         return serviceUsuarios.guardar(usuario);
