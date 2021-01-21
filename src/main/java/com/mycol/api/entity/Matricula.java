@@ -20,20 +20,24 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne
-    @JoinColumn(name = "idApoderado")
+    @JoinColumn(name = "apoderado_id")
     private Apoderado apoderado;
     @OneToOne
-    @JoinColumn(name = "idUsuario")
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     @OneToOne
-    @JoinColumn(name = "idNivel")
+    @JoinColumn(name = "nivel_id")
     private Nivel nivel;
-    private Integer numeroMatricula;
     @OneToOne
-    @JoinColumn(name = "idEstado")
+    @JoinColumn(name = "estado_id")
     private Estado estado;
-    private LocalDate fechaCreacion;
-    private LocalDate fechaModificacion;
-    private Integer createdBy;
-    private Integer modifiedBy;
+    @OneToOne
+    @JoinColumn(name = "anioacademico_id")
+    private AnioAcademico anioAcademico;
+    private Integer numeroMatricula;
+    private Integer created_by;
+    private Integer updated_by;
+    private LocalDate created_at;
+    private LocalDate updated_at;
+    private LocalDate deleted_at;
 }

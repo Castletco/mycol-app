@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "estados")
@@ -18,4 +19,10 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String estado;
+    private String descripcion;
+    private Integer created_by;
+    private Integer updated_by;
+    private LocalDate created_at;
+    private LocalDate updated_at;
+    private LocalDate deleted_at;
 }

@@ -19,7 +19,7 @@ public class FirmaMatricula {
     private LocalDate fechaNacimientoAlumno;
     private int edadAlumno;
     private char sexoSAlumno;
-    private int nacionalidadAlumno;
+    private String nacionalidadAlumno;
     private String alumnoNuevo;
     private String nivelMatricula;
     private String telefonoAlumno;
@@ -29,8 +29,8 @@ public class FirmaMatricula {
     private boolean tipoAlumnoCheck;
     private String tipoAlumnoSeleccionado;
     private String direccionAlumno;
-    private int regionAlumno;
-    private int comunaAlumno;
+    private String regionAlumno;
+    private String comunaAlumno;
     private String parentezcoApoderado;
     private String otroParentezco;
     private String nombreApoderado;
@@ -40,13 +40,13 @@ public class FirmaMatricula {
     private LocalDate fechaNacimientoApoderado;
     private int edadApoderado;
     private char sexoSApoderado;
-    private int nacionalidadApoderado;
+    private String nacionalidadApoderado;
     private int apoderadoViveConAlumno;
     private String telefonoApoderado;
     private String emailApoderado;
     private String direccionApoderado;
-    private int regionApoderado;
-    private int comunaApoderado;
+    private String regionApoderado;
+    private String comunaApoderado;
     private String hermanos;
     private String conQuienVive;
     private String nombreConQuienVive;
@@ -56,4 +56,5 @@ public class FirmaMatricula {
     private int conocePuntajeRsh;
     private int puntajeRsh;
     private int numeroMatricula;
+    private int anioAcademico_id;
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnioAcademicoService implements IAnioAcademicoService {
@@ -17,6 +18,15 @@ public class AnioAcademicoService implements IAnioAcademicoService {
     @Override
     public List<AnioAcademico> buscarTodos() {
         return repoAnioAcademico.findAll();
+    }
+
+    @Override
+    public AnioAcademico buscarPorId(int idAnioAcademico) {
+        Optional<AnioAcademico> optional = repoAnioAcademico.findById(idAnioAcademico);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
     }
 
     @Override

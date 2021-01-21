@@ -16,7 +16,9 @@ public class AnioAcademico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer anioCurso;
+    @OneToOne
+    @JoinColumn(name = "estado_id")
+    private Estado estado;
     private LocalDate fechaInicio;
     private LocalDate fechaTermino;
     private String periodoAcademico;
@@ -26,12 +28,10 @@ public class AnioAcademico {
     private LocalDate fechaTerminoV2;
     private LocalDate fechaInicioV3;
     private LocalDate fechaTerminoV3;
-    @OneToOne
-    @JoinColumn(name = "idEstado")
-    private Estado estado;
     private Integer cantidadMatriculas;
-    private LocalDate fechaCreacion;
-    private LocalDate fechaModificacion;
-    private Integer createdBy;
-    private Integer modifiedBy;
+    private Integer created_by;
+    private Integer updated_by;
+    private LocalDate created_at;
+    private LocalDate updated_at;
+    private LocalDate deleted_at;
 }

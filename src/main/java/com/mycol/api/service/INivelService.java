@@ -7,7 +7,6 @@ import java.util.List;
 public interface INivelService {
     List<Nivel> buscarTodos();
     Nivel buscarPorId (int idNivel);
-    Nivel buscarPorNivel (String nivel);
     Nivel guardar (Nivel nivel);
     void eliminar (Integer idNivel);
 }

@@ -18,7 +18,9 @@ public class Asignatura {
     private Integer id;
     private String nombre;
     private String codigo;
-    private LocalDate fechaModificacion;
-    private Integer createdBy;
-    private Integer modifiedBy;
+    private Integer created_by;
+    private Integer updated_by;
+    private LocalDate created_at;
+    private LocalDate updated_at;
+    private LocalDate deleted_at;
 }

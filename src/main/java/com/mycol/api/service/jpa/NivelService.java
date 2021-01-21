@@ -30,12 +30,6 @@ public class NivelService implements INivelService {
     }
 
     @Override
-    public Nivel buscarPorNivel(String nombreNivel) {
-        Nivel nivel = repoNiveles.findByNivel(nombreNivel);
-        return nivel;
-    }
-
-    @Override
     public Nivel guardar(Nivel nivel) {
         return repoNiveles.save(nivel);
     }

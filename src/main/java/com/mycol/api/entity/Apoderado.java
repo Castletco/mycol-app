@@ -19,14 +19,15 @@ public class Apoderado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne
-    @JoinColumn(name = "idUsuario")
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    private Boolean viveConAlumno;
     @OneToOne
-    @JoinColumn(name = "idEstado")
+    @JoinColumn(name = "estado_id")
     private Estado estado;
-    private LocalDate fechaCreacion;
-    private LocalDate fechaModificacion;
-    private Integer createdBy;
-    private Integer modifiedBy;
+    private int viveConAlumno;
+    private Integer created_by;
+    private Integer updated_by;
+    private LocalDate created_at;
+    private LocalDate modified_at;
+    private LocalDate deleted_at;
 }

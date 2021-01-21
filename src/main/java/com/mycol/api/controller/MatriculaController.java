@@ -23,12 +23,6 @@ public class MatriculaController {
     private IApoderadoService serviceApoderados;
 
     @Autowired
-    private IAlumnoService serviceAlumnos;
-
-    @Autowired
-    private INivelService serviceNiveles;
-
-    @Autowired
     private Helper helper;
 
     @GetMapping("/matriculas")
@@ -39,20 +33,12 @@ public class MatriculaController {
 
         Usuario usuarioApoderado = helper.generaUsuarioApoderado(firma);
         usuarioApoderado = serviceUsuarios.guardar(usuarioApoderado);
-        Apoderado apoderado = helper.generaApoderadoSinF(firma.getApoderadoViveConAlumno());
+        Apoderado apoderado = helper.generaApoderadoSinUsuario(firma.getApoderadoViveConAlumno());
         apoderado.setUsuario(usuarioApoderado);
         apoderado = serviceApoderados.guardar(apoderado);
         Usuario usuarioAlumno = helper.generaUsuarioAlumno(firma);
         usuarioAlumno = serviceUsuarios.guardar(usuarioAlumno);
-        Alumno alumno = helper.generaAlumnoSinF(firma.getAlumnoNuevo() == "S" ? new Character('S') : new Character('N'));
-        alumno.setCurso(helper.generaCursoDummy());
-        alumno.setUsuario(usuarioAlumno);
-        alumno.setApoderado(apoderado);
-        alumno.setEstado(helper.setEstadoInicial());
-        alumno = serviceAlumnos.guardar(alumno);
-        Matricula matricula = helper.generarMatriculaSinF(firma);
-        Nivel nivel = helper.generaNivel(Integer.parseInt(firma.getNivelMatricula()));
-        matricula.setNivel(nivel);
+        Matricula matricula = helper.generarMatriculaSinUsuario(firma);
         matricula.setApoderado(apoderado);
         matricula.setUsuario(usuarioAlumno);
         serviceMatriculas.guardar(matricula);

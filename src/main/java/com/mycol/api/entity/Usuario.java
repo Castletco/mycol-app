@@ -18,8 +18,12 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne
-    @JoinColumn(name = "idNacionalidad")
-    private Nacionalidad nacionalidad;
+    @JoinColumn(name = "estado_id")
+    private Estado estado;
+    @OneToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
+    private String nacionalidad;
     private String nombreUsuario;
     private String apellidoPaternoUsuario;
     private String apellidoMaternoUsuario;
@@ -29,26 +33,14 @@ public class Usuario {
     private Character sexo;
     private String direccion;
     private String telefono;
-    @OneToOne
-    @JoinColumn(name = "idRegion")
-    private Region region;
-    @OneToOne
-    @JoinColumn(name = "idComuna")
-    private Comuna comuna;
-    @OneToOne
-    @JoinColumn(name = "idEstado")
-    private Estado estado;
+    private String region;
+    private String comuna;
     private String email;
     private String username;
     private String password;
-    @OneToOne
-    @JoinColumn(name = "idTipoUsuario")
-    private TipoUsuario tipoUsuario;
-    @OneToOne
-    @JoinColumn(name = "idPerfil")
-    private Perfil perfil;
-    private LocalDate fechaCreacion;
-    private LocalDate fechaModificacion;
-    private Integer createdBy;
-    private Integer modifiedBy;
+    private Integer created_by;
+    private Integer updated_by;
+    private LocalDate created_at;
+    private LocalDate updated_at;
+    private LocalDate deleted_at;
 }

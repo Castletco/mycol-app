@@ -18,6 +18,11 @@ public class AnioAcademicoController {
     @GetMapping("/anioAcademico")
     public List<AnioAcademico> buscarTodos() { return serviceAnioAcademico.buscarTodos(); }
 
+    @GetMapping("/anioAcademico/edit/{id}")
+    public AnioAcademico editar (@PathVariable("id") int idAnioAcademico) {
+        return serviceAnioAcademico.buscarPorId(idAnioAcademico);
+    }
+
     @PostMapping("/anioAcademico")
     public AnioAcademico guardar (@RequestBody AnioAcademico anioAcademico) {
         serviceAnioAcademico.guardar(anioAcademico);
