@@ -20,8 +20,8 @@ public class RolController {
         return serviceRoles.buscarTodos();
     }
 
-    @GetMapping("/roles/edit/{id}")
-    public Rol editar (@PathVariable("id") int idRol) {
+    @GetMapping("/roles/search/{id}")
+    public Rol buscarPorId (@PathVariable("id") int idRol) {
         return serviceRoles.buscarPorId(idRol);
     }
 

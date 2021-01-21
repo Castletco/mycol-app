@@ -20,8 +20,8 @@ public class UsuarioController {
         return serviceUsuarios.buscarTodos();
     }
 
-    @GetMapping("/usuarios/edit/{id}")
-    public Usuario editar (@PathVariable("id") int idUsuario) {
+    @GetMapping("/usuarios/search/{id}")
+    public Usuario buscarPorId (@PathVariable("id") int idUsuario) {
         return serviceUsuarios.buscarPorId(idUsuario);
     }
 

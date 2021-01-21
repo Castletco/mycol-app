@@ -20,8 +20,8 @@ public class NivelController {
         return serviceNiveles.buscarTodos();
     }
 
-    @GetMapping("/niveles/edit/{id}")
-    public Nivel editar (@PathVariable("id") int idNivel) {
+    @GetMapping("/niveles/search/{id}")
+    public Nivel buscarPorId (@PathVariable("id") int idNivel) {
         return serviceNiveles.buscarPorId(idNivel);
     }
 

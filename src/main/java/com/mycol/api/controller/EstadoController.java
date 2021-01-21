@@ -20,8 +20,8 @@ public class EstadoController {
         return serviceEstados.buscarTodos();
     }
 
-    @GetMapping("/estados/edit({id}")
-    public Estado editar (@PathVariable("id") int idEstado) {
+    @GetMapping("/estados/search({id}")
+    public Estado buscarPorId (@PathVariable("id") int idEstado) {
         return serviceEstados.buscarPorId(idEstado);
     }
 

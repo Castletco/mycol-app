@@ -20,8 +20,8 @@ public class AsignaturasController {
         return serviceAsignaturas.buscarTodos();
     }
 
-    @GetMapping("/asignaturas/edit/{id}")
-    public Asignatura editar (@PathVariable("id") int idAsignatura) {
+    @GetMapping("/asignaturas/search/{id}")
+    public Asignatura buscarPorId (@PathVariable("id") int idAsignatura) {
         return serviceAsignaturas.buscarPorId(idAsignatura);
     }
 

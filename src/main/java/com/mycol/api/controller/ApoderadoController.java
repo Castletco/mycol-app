@@ -18,7 +18,7 @@ public class ApoderadoController {
     @GetMapping("/apoderados")
     public List<Apoderado> buscarTodos() { return serviceApoderados.buscarTodos(); }
 
-    @GetMapping("/apoderados/edit/{id}")
+    @GetMapping("/apoderados/search/{id}")
     public Apoderado buscarPorId(@PathVariable("id") int idApoderado) {
         return serviceApoderados.buscarPorId(idApoderado);
     }

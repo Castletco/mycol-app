@@ -20,8 +20,8 @@ public class ProfesorController {
         return serviceProfesores.buscarTodos();
     }
 
-    @GetMapping("/profesores/edit/{id}")
-    public Profesor editar (@PathVariable("id") int idProfesor) {
+    @GetMapping("/profesores/search/{id}")
+    public Profesor buscarPorId (@PathVariable("id") int idProfesor) {
         return serviceProfesores.buscarPorId(idProfesor);
     }
 

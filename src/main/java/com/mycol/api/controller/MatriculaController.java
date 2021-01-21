@@ -28,8 +28,8 @@ public class MatriculaController {
     @GetMapping("/matriculas")
     public List<Matricula> buscarTodas() { return serviceMatriculas.buscarTodas(); }
 
-    @GetMapping("/matriculas/edit/{id}")
-    public Matricula editar (@PathVariable("id") int idMatricula) {
+    @GetMapping("/matriculas/search/{id}")
+    public Matricula buscarPorId (@PathVariable("id") int idMatricula) {
         return serviceMatriculas.buscarPorId(idMatricula);
     }
 
