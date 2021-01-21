@@ -18,6 +18,11 @@ public class ApoderadoController {
     @GetMapping("/apoderados")
     public List<Apoderado> buscarTodos() { return serviceApoderados.buscarTodos(); }
 
+    @GetMapping("/apoderados/edit/{id}")
+    public Apoderado buscarPorId(@PathVariable("id") int idApoderado) {
+        return serviceApoderados.buscarPorId(idApoderado);
+    }
+
     @PostMapping("/apoderados")
     public Apoderado guardar (@RequestBody Apoderado apoderado) {
         serviceApoderados.guardar(apoderado);

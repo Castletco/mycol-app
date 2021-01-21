@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MatriculaService implements IMatriculaService {
@@ -17,6 +18,15 @@ public class MatriculaService implements IMatriculaService {
     @Override
     public List<Matricula> buscarTodas() {
         return repoMatriculas.findAll();
+    }
+
+    @Override
+    public Matricula buscarPorId(int idMatricula) {
+        Optional<Matricula> optional = repoMatriculas.findById(idMatricula);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
     }
 
     @Override
