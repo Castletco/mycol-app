@@ -28,6 +28,6 @@ public class Apoderado {
     private Integer created_by;
     private Integer updated_by;
     private LocalDate created_at;
-    private LocalDate modified_at;
+    private LocalDate updated_at;
     private LocalDate deleted_at;
 }
