@@ -30,6 +30,11 @@ public class AnioAcademicoService implements IAnioAcademicoService {
     }
 
     @Override
+    public AnioAcademico buscarPorEstado(int idEstado) {
+        return repoAnioAcademico.findByEstado(idEstado);
+    }
+
+    @Override
     public AnioAcademico guardar(AnioAcademico anioAcademico) {
         return repoAnioAcademico.save(anioAcademico);
     }

@@ -23,6 +23,11 @@ public class AnioAcademicoController {
         return serviceAnioAcademico.buscarPorId(idAnioAcademico);
     }
 
+    @GetMapping("/anioAcademico/searchEstado/{id}")
+    public AnioAcademico buscarPorEstado (@PathVariable("id") int idEstado) {
+        return serviceAnioAcademico.buscarPorEstado(idEstado);
+    }
+
     @PostMapping("/anioAcademico")
     public AnioAcademico guardar (@RequestBody AnioAcademico anioAcademico) {
         serviceAnioAcademico.guardar(anioAcademico);

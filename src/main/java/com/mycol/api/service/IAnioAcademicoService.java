@@ -8,6 +8,7 @@ public interface IAnioAcademicoService {
 
     List<AnioAcademico> buscarTodos();
     AnioAcademico buscarPorId (int idAnioAcademico);
+    AnioAcademico buscarPorEstado (int idEstado);
     AnioAcademico guardar (AnioAcademico anioAcademico);
     void eliminar (Integer idAnioAcademico);
 }
