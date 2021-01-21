@@ -30,6 +30,11 @@ public class MatriculaService implements IMatriculaService {
     }
 
     @Override
+    public Matricula buscarPorAnioAcademico(int idAnioAcademico) {
+        return repoMatriculas.findByAnioAcademico(idAnioAcademico);
+    }
+
+    @Override
     public Matricula guardar(Matricula matricula) {
         return repoMatriculas.save(matricula);
     }

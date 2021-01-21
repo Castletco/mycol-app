@@ -33,6 +33,12 @@ public class MatriculaController {
         return serviceMatriculas.buscarPorId(idMatricula);
     }
 
+    @GetMapping("/matriculas/searchAnioAcademico/{id}")
+    public Integer buscarMatriculasPorAnioAcademico (@PathVariable("id") int idAnioAcademico) {
+        Matricula matricula = serviceMatriculas.buscarPorAnioAcademico(idAnioAcademico);
+        return matricula.getNumeroMatricula();
+    }
+
     @PostMapping("/matriculas")
     public Matricula guardar (@RequestBody FirmaMatricula firma) {
 

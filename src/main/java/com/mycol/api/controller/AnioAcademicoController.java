@@ -1,7 +1,9 @@
 package com.mycol.api.controller;
 
 import com.mycol.api.entity.AnioAcademico;
+import com.mycol.api.entity.Matricula;
 import com.mycol.api.service.IAnioAcademicoService;
+import com.mycol.api.service.IMatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,9 @@ public class AnioAcademicoController {
 
     @Autowired
     private IAnioAcademicoService serviceAnioAcademico;
+
+    @Autowired
+    private IMatriculaService serviceMatriculas;
 
     @GetMapping("/anioAcademico")
     public List<AnioAcademico> buscarTodos() { return serviceAnioAcademico.buscarTodos(); }
