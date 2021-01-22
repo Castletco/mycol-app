@@ -29,7 +29,7 @@ public class AnioAcademicoController {
     }
 
     @GetMapping("/anioAcademico/searchEstado/{id}")
-    public AnioAcademico buscarPorEstado (@PathVariable("id") int idEstado) {
+    public List<AnioAcademico> buscarPorEstado (@PathVariable("id") int idEstado) {
         return serviceAnioAcademico.buscarPorEstado(idEstado);
     }
 

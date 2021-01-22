@@ -7,7 +7,7 @@ import java.util.List;
 public interface IMatriculaService {
     List<Matricula> buscarTodas();
     Matricula buscarPorId(int idMatricula);
-    Matricula buscarPorAnioAcademico (int idAnioAcademico);
+    List<Matricula> buscarPorAnioAcademico (int idAnioAcademico);
     Matricula guardar (Matricula matricula);
     void eliminar (Integer idMatricula);
 }

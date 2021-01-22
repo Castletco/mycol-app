@@ -1,7 +1,10 @@
 package com.mycol.api.service.jpa;
 
+import com.mycol.api.entity.AnioAcademico;
 import com.mycol.api.entity.Matricula;
+import com.mycol.api.repository.AnioAcademicoRepository;
 import com.mycol.api.repository.MatriculaRepository;
+import com.mycol.api.service.IAnioAcademicoService;
 import com.mycol.api.service.IMatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,9 @@ public class MatriculaService implements IMatriculaService {
 
     @Autowired
     private MatriculaRepository repoMatriculas;
+
+    @Autowired
+    private AnioAcademicoRepository repoAnioAcademico;
 
     @Override
     public List<Matricula> buscarTodas() {
@@ -30,8 +36,12 @@ public class MatriculaService implements IMatriculaService {
     }
 
     @Override
-    public Matricula buscarPorAnioAcademico(int idAnioAcademico) {
-        return repoMatriculas.findByAnioAcademico(idAnioAcademico);
+    public List<Matricula> buscarPorAnioAcademico(int idAnioAcademico) {
+        Optional<AnioAcademico> optional = repoAnioAcademico.findById(idAnioAcademico);
+        if (optional.isPresent()) {
+            return repoMatriculas.findByAnioAcademico(optional.get());
+        }
+        return null;
     }
 
     @Override
