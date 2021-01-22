@@ -56,4 +56,5 @@ public class FirmaMatricula {
     private boolean tieneRsh;
     private boolean tipoAlumnoCheck;
     private String tipoAlumnoSeleccionado;
+    private int anioAcademico;
 }

@@ -108,6 +108,10 @@ public class Helper {
         return serviceCursos.buscarPorId(idCurso);
     }
 
+    public AnioAcademico getAnioAcademico (int idAnioAcademico) {
+        return serviceAnioAcademico.buscarPorId(idAnioAcademico);
+    }
+
     public static String randomAlphaNumeric (int count) {
         String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder builder = new StringBuilder();
