@@ -45,10 +45,10 @@ public class Helper {
         return userApoderado;
     }
 
-    public Apoderado generaApoderadoSinUsuario (int viveConAlumno) {
+    public Apoderado generaApoderadoSinUsuario (boolean viveConAlumno) {
         Apoderado apoderado = new Apoderado();
         apoderado.setEstado(setEstadoInicial());
-        apoderado.setViveConAlumno(viveConAlumno);
+        apoderado.setViveConAlumno(viveConAlumno ? 1 : 0);
         return apoderado;
     }
 
@@ -77,20 +77,18 @@ public class Helper {
     public Matricula generarMatriculaSinUsuario (FirmaMatricula firma) {
         Matricula matricula = new Matricula();
         matricula.setNivel(generaNivel(Integer.parseInt(firma.getNivelMatricula())));
-        matricula.setAnioAcademico(generaAnioAcademico(firma.getAnioAcademico_id()));
-        matricula.setNumeroMatricula(firma.getNumeroMatricula());
         matricula.setEstado(setEstadoInicial());
         return matricula;
     }
 
     public DatosFamiliares generaDatosFamiliaresAlumno (FirmaMatricula firma) {
         DatosFamiliares datosFamiliares = new DatosFamiliares();
-        datosFamiliares.setEsPuebloOriginario(firma.getEsPuebloOriginario());
+        datosFamiliares.setEsPuebloOriginario(firma.isOriginarioAlumno() ? 1 : 0);
         datosFamiliares.setNombrePuebloOriginario(firma.getPuebloOriginarioAlumno());
-        datosFamiliares.setViveConPadres(firma.getApoderadoViveConAlumno());
-        datosFamiliares.setTieneFichaSocialHogares(firma.getTieneRsh());
-        datosFamiliares.setPuntaje(firma.getPuntajeRsh());
-        datosFamiliares.setConoceSuPuntajeRSH(firma.getConocePuntajeRsh());
+        datosFamiliares.setViveConPadres(firma.isApoderadoViveConAlumno() ? 1 : 0);
+        datosFamiliares.setTieneFichaSocialHogares(firma.isTieneRsh() ? 1 : 0);
+        datosFamiliares.setPuntaje(firma.getPuntajeRsh() == "" ? 0 : Integer.parseInt(firma.getPuntajeRsh()));
+        datosFamiliares.setConoceSuPuntajeRSH(firma.isConocePuntajeRsh() ? 1 : 0);
         return datosFamiliares;
     }
 
@@ -108,10 +106,6 @@ public class Helper {
 
     public Curso setCursoInicial(int idCurso) {
         return serviceCursos.buscarPorId(idCurso);
-    }
-
-    public AnioAcademico generaAnioAcademico(int anioAcademico_id) {
-        return serviceAnioAcademico.buscarPorId(anioAcademico_id);
     }
 
     public static String randomAlphaNumeric (int count) {

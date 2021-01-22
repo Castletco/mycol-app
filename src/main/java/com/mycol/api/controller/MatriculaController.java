@@ -50,7 +50,7 @@ public class MatriculaController {
 
         Usuario usuarioApoderado = helper.generaUsuarioApoderado(firma);
         usuarioApoderado = serviceUsuarios.guardar(usuarioApoderado);
-        Apoderado apoderado = helper.generaApoderadoSinUsuario(firma.getApoderadoViveConAlumno());
+        Apoderado apoderado = helper.generaApoderadoSinUsuario(firma.isApoderadoViveConAlumno());
         apoderado.setUsuario(usuarioApoderado);
         apoderado = serviceApoderados.guardar(apoderado);
         Usuario usuarioAlumno = helper.generaUsuarioAlumno(firma);
@@ -59,8 +59,8 @@ public class MatriculaController {
         alumno.setUsuario(usuarioAlumno);
         alumno.setApoderado(apoderado);
         alumno.setEstado(helper.setEstadoInicial());
-        alumno.setCurso(helper.setCursoInicial(firma.getCurso_id()));
-        alumno.setAlumnoNuevo(firma.getAlumnoNuevo() == true ? 1 : 0);
+        alumno.setCurso(helper.setCursoInicial(firma.getCurso()));
+        alumno.setAlumnoNuevo(firma.isAlumnoNuevo() ? 1 : 0);
         alumno = serviceAlumnos.guardar(alumno);
         DatosFamiliares datosFamiliares = helper.generaDatosFamiliaresAlumno(firma);
         datosFamiliares.setAlumno(alumno);
