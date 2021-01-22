@@ -20,7 +20,7 @@ public class FirmaMatricula {
     private int edadAlumno;
     private char sexoSAlumno;
     private String nacionalidadAlumno;
-    private String alumnoNuevo;
+    private Boolean alumnoNuevo;
     private String nivelMatricula;
     private String telefonoAlumno;
     private String emailAlumno;
@@ -57,4 +57,5 @@ public class FirmaMatricula {
     private int puntajeRsh;
     private int numeroMatricula;
     private int anioAcademico_id;
+    private int curso_id;
 }

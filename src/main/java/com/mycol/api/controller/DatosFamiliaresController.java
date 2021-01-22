@@ -15,34 +15,34 @@ public class DatosFamiliaresController {
     @Autowired
     private IDatosFamiliaresService serviceDatosAdicionales;
 
-    @GetMapping("/datosAdicionales")
+    @GetMapping("/datosFamiliares")
     public List<DatosFamiliares> buscarTodos() {
         return serviceDatosAdicionales.buscarTodos();
     }
 
-    @GetMapping("/datosAdicionales/search/{id}")
+    @GetMapping("/datosFamiliares/search/{id}")
     public DatosFamiliares buscarPorId (@PathVariable("id") int idDatosAdicionales) {
         return serviceDatosAdicionales.buscarPorId(idDatosAdicionales);
     }
 
-    @GetMapping("/datosAdicionales/searchAlumno/{id}")
+    @GetMapping("/datosFamiliares/searchAlumno/{id}")
     public DatosFamiliares buscarPorIdAlumno (@PathVariable("id") int idAlumno) {
         return serviceDatosAdicionales.buscarPorIdAlumno(idAlumno);
     }
 
-    @PostMapping("/datosAdicionales")
+    @PostMapping("/datosFamiliares")
     public DatosFamiliares guardar (DatosFamiliares datosFamiliares) {
         return serviceDatosAdicionales.guardar(datosFamiliares);
     }
 
-    @PutMapping("/datosAdicionales")
+    @PutMapping("/datosFamiliares")
     public DatosFamiliares modificar (DatosFamiliares datosFamiliares) {
         return serviceDatosAdicionales.guardar(datosFamiliares);
     }
 
-    @DeleteMapping("/datosAdicionales/{id}")
+    @DeleteMapping("/datosFamiliares/{id}")
     public String eliminar (@PathVariable("id") int idDatosAdicionales) {
         serviceDatosAdicionales.eliminar(idDatosAdicionales);
-        return "Registro Datos Adicionales Eliminado";
+        return "Registro Datos Familiares Eliminado";
     }
 }

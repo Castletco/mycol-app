@@ -20,7 +20,7 @@ public class DatosFamiliares {
     @OneToOne
     @JoinColumn(name = "alumno_id")
     private Alumno alumno;
-    private int puebloOriginario;
+    private int esPuebloOriginario;
     private String nombrePuebloOriginario;
     private int viveConPadres;
     private int tieneFichaSocialHogares;

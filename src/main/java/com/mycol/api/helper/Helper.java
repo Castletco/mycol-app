@@ -5,8 +5,6 @@ import com.mycol.api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-
 @Component
 public class Helper {
 
@@ -18,6 +16,9 @@ public class Helper {
 
     @Autowired
     private IAnioAcademicoService serviceAnioAcademico;
+
+    @Autowired
+    private ICursoService serviceCursos;
 
     @Autowired
     private INivelService serviceNiveles;
@@ -84,9 +85,12 @@ public class Helper {
 
     public DatosFamiliares generaDatosFamiliaresAlumno (FirmaMatricula firma) {
         DatosFamiliares datosFamiliares = new DatosFamiliares();
-        datosFamiliares.setConoceSuPuntajeRSH(firma.getConocePuntajeRsh());
+        datosFamiliares.setEsPuebloOriginario(firma.getEsPuebloOriginario());
         datosFamiliares.setNombrePuebloOriginario(firma.getPuebloOriginarioAlumno());
-        datosFamiliares.setPuebloOriginario(firma.getEsPuebloOriginario());
+        datosFamiliares.setViveConPadres(firma.getApoderadoViveConAlumno());
+        datosFamiliares.setTieneFichaSocialHogares(firma.getTieneRsh());
+        datosFamiliares.setPuntaje(firma.getPuntajeRsh());
+        datosFamiliares.setConoceSuPuntajeRSH(firma.getConocePuntajeRsh());
         return datosFamiliares;
     }
 
@@ -100,6 +104,10 @@ public class Helper {
 
     public Nivel generaNivel(int idNivel) {
         return serviceNiveles.buscarPorId(idNivel);
+    }
+
+    public Curso setCursoInicial(int idCurso) {
+        return serviceCursos.buscarPorId(idCurso);
     }
 
     public AnioAcademico generaAnioAcademico(int anioAcademico_id) {

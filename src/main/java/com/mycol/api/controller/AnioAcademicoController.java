@@ -33,6 +33,12 @@ public class AnioAcademicoController {
         return serviceAnioAcademico.buscarPorEstado(idEstado);
     }
 
+    @GetMapping("/anioAcademico/cantidadMatriculas/{id}")
+    public Integer cantidadMatriculasPorAnioAcademico (@PathVariable("id") int idAnioAcademico) {
+        AnioAcademico anioAcademico = serviceAnioAcademico.buscarPorId(idAnioAcademico);
+        return anioAcademico.getCantidadMatriculas();
+    }
+
     @PostMapping("/anioAcademico")
     public AnioAcademico guardar (@RequestBody AnioAcademico anioAcademico) {
         serviceAnioAcademico.guardar(anioAcademico);

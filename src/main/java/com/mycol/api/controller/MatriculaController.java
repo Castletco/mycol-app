@@ -23,6 +23,12 @@ public class MatriculaController {
     private IApoderadoService serviceApoderados;
 
     @Autowired
+    private IAlumnoService serviceAlumnos;
+
+    @Autowired
+    private IDatosFamiliaresService serviceDatosFamiliares;
+
+    @Autowired
     private Helper helper;
 
     @GetMapping("/matriculas")
@@ -49,6 +55,16 @@ public class MatriculaController {
         apoderado = serviceApoderados.guardar(apoderado);
         Usuario usuarioAlumno = helper.generaUsuarioAlumno(firma);
         usuarioAlumno = serviceUsuarios.guardar(usuarioAlumno);
+        Alumno alumno = new Alumno();
+        alumno.setUsuario(usuarioAlumno);
+        alumno.setApoderado(apoderado);
+        alumno.setEstado(helper.setEstadoInicial());
+        alumno.setCurso(helper.setCursoInicial(firma.getCurso_id()));
+        alumno.setAlumnoNuevo(firma.getAlumnoNuevo() == true ? 1 : 0);
+        alumno = serviceAlumnos.guardar(alumno);
+        DatosFamiliares datosFamiliares = helper.generaDatosFamiliaresAlumno(firma);
+        datosFamiliares.setAlumno(alumno);
+        serviceDatosFamiliares.guardar(datosFamiliares);
         Matricula matricula = helper.generarMatriculaSinUsuario(firma);
         matricula.setApoderado(apoderado);
         matricula.setUsuario(usuarioAlumno);
