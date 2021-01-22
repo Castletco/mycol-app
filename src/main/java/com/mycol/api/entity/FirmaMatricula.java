@@ -24,7 +24,7 @@ public class FirmaMatricula {
     private String nivelMatricula;
     private String telefonoAlumno;
     private String emailAlumno;
-    private boolean originarioAlumno;
+    private int esPuebloOriginario;
     private String puebloOriginarioAlumno;
     private boolean tipoAlumnoCheck;
     private String tipoAlumnoSeleccionado;

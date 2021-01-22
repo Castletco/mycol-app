@@ -82,6 +82,14 @@ public class Helper {
         return matricula;
     }
 
+    public DatosFamiliares generaDatosFamiliaresAlumno (FirmaMatricula firma) {
+        DatosFamiliares datosFamiliares = new DatosFamiliares();
+        datosFamiliares.setConoceSuPuntajeRSH(firma.getConocePuntajeRsh());
+        datosFamiliares.setNombrePuebloOriginario(firma.getPuebloOriginarioAlumno());
+        datosFamiliares.setPuebloOriginario(firma.getEsPuebloOriginario());
+        return datosFamiliares;
+    }
+
     public Estado setEstadoInicial() {
         return serviceEstados.buscarPorId(1);
     }

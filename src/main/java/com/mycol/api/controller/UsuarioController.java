@@ -26,7 +26,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/usuarios/searchRut/{rut}")
-    public Usuario buscarPorRut (@PathVariable("rut") int rutUsuario) {
+    public Usuario buscarPorRut (@PathVariable("rut") String rutUsuario) {
         return serviceUsuarios.buscarPorRut(rutUsuario);
     }
 

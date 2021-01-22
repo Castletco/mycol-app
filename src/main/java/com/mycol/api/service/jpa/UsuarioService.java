@@ -35,7 +35,7 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Usuario buscarPorRut(Integer rutUsuario) {
+    public Usuario buscarPorRut(String rutUsuario) {
         return repoUsuarios.findByRut(rutUsuario);
     }
 

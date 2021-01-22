@@ -8,7 +8,7 @@ public interface IUsuarioService {
     List<Usuario> buscarTodos();
     Usuario guardar (Usuario usuario);
     Usuario buscarPorId (Integer idUsuario);
-    Usuario buscarPorRut (Integer rutUsuario);
+    Usuario buscarPorRut (String rutUsuario);
     Usuario buscarPorNombre (String username);
     void eliminar (Integer idUsuario);
 }
