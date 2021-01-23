@@ -5,6 +5,8 @@ import com.mycol.api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.DecimalFormat;
+
 @Component
 public class Helper {
 
@@ -78,6 +80,8 @@ public class Helper {
         Matricula matricula = new Matricula();
         matricula.setNivel(generaNivel(Integer.parseInt(firma.getNivelMatricula())));
         matricula.setEstado(setEstadoInicial());
+        AnioAcademico anioAcademico = serviceAnioAcademico.buscarPorId(firma.getAnioAcademico());
+        matricula.setNumeroMatricula(generarNumero(anioAcademico.getAnioAcademicoNumero()));
         return matricula;
     }
 
@@ -120,5 +124,15 @@ public class Helper {
             builder.append(CARACTERES.charAt(character));
         }
         return builder.toString();
+    }
+
+    //Se recibe como parámetro el número en forma de String que se trae de la consulta.
+    private Integer generarNumero(int numero){
+        String numeroMatricula = "";
+        //Se hace el formato del String.
+        DecimalFormat format = new DecimalFormat("00000000");
+        //Se realiza la convesión del String recibido como parámetro y se le suma 1.
+        numeroMatricula = format.format(Integer.valueOf(numero) + 1);
+        return Integer.parseInt(numeroMatricula);
     }
 }

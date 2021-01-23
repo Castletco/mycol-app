@@ -34,4 +34,5 @@ public class AnioAcademico {
     private LocalDate created_at;
     private LocalDate updated_at;
     private LocalDate deleted_at;
+    private Integer anioAcademicoNumero;
 }
