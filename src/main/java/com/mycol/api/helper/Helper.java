@@ -28,7 +28,7 @@ public class Helper {
     public Usuario generaUsuarioApoderado (FirmaMatricula firma) {
         Usuario userApoderado = new Usuario();
         userApoderado.setEstado(setEstadoInicial());
-        userApoderado.setRol(setRolInicial());
+        userApoderado.setRol(setRolApoderado());
         userApoderado.setNacionalidad(firma.getNacionalidadApoderado());
         userApoderado.setNombreUsuario(firma.getNombreApoderado());
         userApoderado.setApellidoPaternoUsuario(firma.getApellidoPatApoderado());
@@ -57,7 +57,7 @@ public class Helper {
     public Usuario generaUsuarioAlumno (FirmaMatricula firma) {
         Usuario userAlumno = new Usuario();
         userAlumno.setEstado(setEstadoInicial());
-        userAlumno.setRol(setRolInicial());
+        userAlumno.setRol(setRolAlumno());
         userAlumno.setNacionalidad(firma.getNacionalidadAlumno());
         userAlumno.setNombreUsuario(firma.getNombreAlumno());
         userAlumno.setApellidoPaternoUsuario(firma.getApellidoPatAlumno());
@@ -72,7 +72,7 @@ public class Helper {
         userAlumno.setComuna(firma.getComunaAlumno());
         userAlumno.setEmail(firma.getEmailAlumno());
         userAlumno.setUsername(randomAlphaNumeric(3));
-        userAlumno.setPassword("12345");
+        userAlumno.setPassword(null);
         return userAlumno;
     }
 
@@ -100,8 +100,12 @@ public class Helper {
         return serviceEstados.buscarPorId(1);
     }
 
-    public Rol setRolInicial() {
-        return serviceRoles.buscarPorId(1);
+    public Rol setRolAlumno() {
+        return serviceRoles.buscarPorId(2);
+    }
+
+    public Rol setRolApoderado() {
+        return serviceRoles.buscarPorId(4);
     }
 
     public Nivel generaNivel(int idNivel) {

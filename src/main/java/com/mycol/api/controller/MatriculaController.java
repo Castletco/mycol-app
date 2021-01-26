@@ -69,6 +69,7 @@ public class MatriculaController {
         matricula.setApoderado(apoderado);
         matricula.setUsuario(usuarioAlumno);
         matricula.setAnioAcademico(helper.getAnioAcademico(firma.getAnioAcademico()));
+        matricula.setAlumno(alumno);
         serviceMatriculas.guardar(matricula);
         return matricula;
     }

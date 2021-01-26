@@ -34,6 +34,9 @@ public class Matricula {
     @OneToOne
     @JoinColumn(name = "anioacademico_id")
     private AnioAcademico anioAcademico;
+    @OneToOne
+    @JoinColumn(name = "alumno_id")
+    private Alumno alumno;
     private Integer numeroMatricula;
     private Integer created_by;
     private Integer updated_by;
