@@ -7,6 +7,7 @@ import com.mycol.api.repository.MatriculaRepository;
 import com.mycol.api.service.IAnioAcademicoService;
 import com.mycol.api.service.IMatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class MatriculaService implements IMatriculaService {
     public List<Matricula> buscarPorAnioAcademico(int idAnioAcademico) {
         Optional<AnioAcademico> optional = repoAnioAcademico.findById(idAnioAcademico);
         if (optional.isPresent()) {
-            return repoMatriculas.findByAnioAcademico(optional.get());
+            return repoMatriculas.findByAnioAcademicoAndEstado(optional.get(), 1);
         }
         return null;
     }
@@ -53,4 +54,5 @@ public class MatriculaService implements IMatriculaService {
     public void eliminar(Integer idMatricula) {
         repoMatriculas.deleteById(idMatricula);
     }
+
 }

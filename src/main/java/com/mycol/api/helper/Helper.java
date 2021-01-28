@@ -4,7 +4,10 @@ import com.mycol.api.entity.*;
 import com.mycol.api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 @Component
@@ -47,6 +50,28 @@ public class Helper {
         return userApoderado;
     }
 
+    public Usuario getUsuarioApoderadoBD (Usuario usuarioApoderado, FirmaMatricula firma) {
+        if (!usuarioApoderado.getDireccion().equals(firma.getDireccionApoderado())) {
+            usuarioApoderado.setDireccion(firma.getDireccionApoderado());
+        }
+        if (!usuarioApoderado.getEmail().equals(firma.getEmailApoderado())) {
+            usuarioApoderado.setEmail(firma.getEmailApoderado());
+        }
+        if (!usuarioApoderado.getTelefono().equals(firma.getTelefonoApoderado())) {
+            usuarioApoderado.setTelefono(firma.getTelefonoApoderado());
+        }
+        if (!usuarioApoderado.getRegion().equals(firma.getRegionApoderado())) {
+            usuarioApoderado.setRegion(firma.getRegionApoderado());
+        }
+        if (!usuarioApoderado.getComuna().equals(firma.getComunaApoderado())) {
+            usuarioApoderado.setComuna(firma.getComunaApoderado());
+        }
+        if (!usuarioApoderado.getEdad().equals(firma.getEdadApoderado())) {
+            usuarioApoderado.setEdad(firma.getEdadApoderado());
+        }
+        return usuarioApoderado;
+    }
+
     public Apoderado generaApoderadoSinUsuario (boolean viveConAlumno) {
         Apoderado apoderado = new Apoderado();
         apoderado.setEstado(setEstadoInicial());
@@ -76,12 +101,34 @@ public class Helper {
         return userAlumno;
     }
 
+    public Usuario getUsuarioAlumnoBD (Usuario usuarioAlumno, FirmaMatricula firma) {
+        if (!usuarioAlumno.getDireccion().equals(firma.getDireccionAlumno())) {
+            usuarioAlumno.setDireccion(firma.getDireccionAlumno());
+        }
+        if (!usuarioAlumno.getEmail().equals(firma.getEmailAlumno())) {
+            usuarioAlumno.setEmail(firma.getEmailAlumno());
+        }
+        if (!usuarioAlumno.getTelefono().equals(firma.getTelefonoAlumno())) {
+            usuarioAlumno.setTelefono(firma.getTelefonoAlumno());
+        }
+        if (!usuarioAlumno.getRegion().equals(firma.getRegionAlumno())) {
+            usuarioAlumno.setRegion(firma.getRegionAlumno());
+        }
+        if (!usuarioAlumno.getComuna().equals(firma.getComunaAlumno())) {
+            usuarioAlumno.setComuna(firma.getComunaAlumno());
+        }
+        if (!usuarioAlumno.getEdad().equals(firma.getEdadAlumno())) {
+            usuarioAlumno.setEdad(firma.getEdadAlumno());
+        }
+        return usuarioAlumno;
+    }
+
     public Matricula generarMatriculaSinUsuario (FirmaMatricula firma) {
         Matricula matricula = new Matricula();
         matricula.setNivel(generaNivel(Integer.parseInt(firma.getNivelMatricula())));
         matricula.setEstado(setEstadoInicial());
         AnioAcademico anioAcademico = serviceAnioAcademico.buscarPorId(firma.getAnioAcademico());
-        matricula.setNumeroMatricula(generarNumero(anioAcademico.getAnioAcademicoNumero()));
+        matricula.setNumeroMatricula(generarNumeroMatricula(anioAcademico.getAnioAcademicoNumero()));
         return matricula;
     }
 
@@ -91,7 +138,7 @@ public class Helper {
         datosFamiliares.setNombrePuebloOriginario(firma.getPuebloOriginarioAlumno());
         datosFamiliares.setViveConPadres(firma.isApoderadoViveConAlumno() ? 1 : 0);
         datosFamiliares.setTieneFichaSocialHogares(firma.isTieneRsh() ? 1 : 0);
-        datosFamiliares.setPuntaje(firma.getPuntajeRsh() == "" ? 0 : Integer.parseInt(firma.getPuntajeRsh()));
+        datosFamiliares.setPuntaje(firma.getPuntajeRsh().equals("") ? 0 : Integer.parseInt(firma.getPuntajeRsh()));
         datosFamiliares.setConoceSuPuntajeRSH(firma.isConocePuntajeRsh() ? 1 : 0);
         return datosFamiliares;
     }
@@ -131,12 +178,27 @@ public class Helper {
     }
 
     //Se recibe como parámetro el número en forma de String que se trae de la consulta.
-    private Integer generarNumero(int numero){
-        String numeroMatricula = "";
+    private Integer generarNumeroMatricula(int numero){
         //Se hace el formato del String.
         DecimalFormat format = new DecimalFormat("00000000");
         //Se realiza la convesión del String recibido como parámetro y se le suma 1.
-        numeroMatricula = format.format(Integer.valueOf(numero) + 1);
+        String numeroMatricula = format.format(numero + 1);
         return Integer.parseInt(numeroMatricula);
+    }
+
+    public static String guardarArchivo(MultipartFile multiPart, String ruta) {
+        // Obtenemos el nombre original del archivo.
+        String nombreOriginal = multiPart.getOriginalFilename();
+        try {
+            // Formamos el nombre del archivo para guardarlo en el disco duro.
+            File imageFile = new File(ruta+ nombreOriginal);
+            System.out.println("Archivo: " + imageFile.getAbsolutePath());
+            //Guardamos fisicamente el archivo en HD.
+            multiPart.transferTo(imageFile);
+            return nombreOriginal;
+        } catch (IOException e) {
+            System.out.println("Error " + e.getMessage());
+            return null;
+        }
     }
 }

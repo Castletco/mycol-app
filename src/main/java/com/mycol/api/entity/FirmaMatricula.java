@@ -13,6 +13,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class FirmaMatricula {
     private boolean alumnoNuevo;
+    private int anioAcademico;
+    private int anioAcademicoNumero;
     private String apellidoMatAlumno;
     private String apellidoMatApoderado;
     private String apellidoPatAlumno;
@@ -56,5 +58,4 @@ public class FirmaMatricula {
     private boolean tieneRsh;
     private boolean tipoAlumnoCheck;
     private String tipoAlumnoSeleccionado;
-    private int anioAcademico;
 }
